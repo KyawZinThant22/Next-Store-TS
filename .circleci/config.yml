@@ -12,7 +12,6 @@ jobs:
     steps:
       - checkout
       - uses: actions/checkout@v2
-
       - name: Use Node.js 16.x
 
       # Download and cache dependencies
