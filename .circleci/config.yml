@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@4.0.0
+  node: circleci/node@3.0.0
   codecov: codecov/codecov@1.0.2
 jobs:
   build:
@@ -11,6 +11,9 @@ jobs:
 
     steps:
       - checkout
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 16.x
 
       # Download and cache dependencies
       - restore_cache:
