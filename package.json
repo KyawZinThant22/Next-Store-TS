@@ -10,10 +10,12 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "test:coverage": "cross-env CI=true npm test -- --env=jsdom --coverage",
-    "upload:test-report": "./node_modules/.bin/codecov"
+    "upload:test-report": "./node_modules/.bin/codecov",
+    "netlify:deploy": "netlify deploy --dir=./build -p -m \"$(git log -1 --pretty=%B)\""
   },
   "dependencies": {
     "eslint-config-prettier": "^8.8.0",
+    "netlify-cli": "^14.3.1",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
