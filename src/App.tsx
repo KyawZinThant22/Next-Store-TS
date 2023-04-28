@@ -1,5 +1,5 @@
 function App() {
-   return <div className="bg-red-400 h-screen w-full">hello my love nay chi hsu pyae</div>;
+   return <div className="bg-red-400 h-screen w-full">I love my gf nay chi hsu pyae so much </div>;
 }
 
 export default App;
