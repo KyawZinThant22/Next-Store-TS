@@ -28,7 +28,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
      
-      - run: npm run netlify:deploy
+      - run: yarn run netlify:deploy
 
       - codecov/upload:
           file: './coverage/clover.xml'
