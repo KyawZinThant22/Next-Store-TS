@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: node:'16.10'
+       - image: node:11.10.1
 
     working_directory: ~/repo
 
@@ -15,8 +15,8 @@ jobs:
 
       - node/test:
           version: '16.10'
-       
           pkg-manager: yarn
+
       # Download and cache dependencies
       - restore_cache:
           keys:
