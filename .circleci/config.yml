@@ -4,7 +4,6 @@ orbs:
   node: circleci/node@4.7
   codecov: codecov/codecov@1.0.2
 jobs:
- 
   build:
     docker:
       - image: node:'16.10'
