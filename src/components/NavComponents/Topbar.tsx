@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const TopBar = () => {
    return (
       <div className="block bg-skin-jade text-white ">
-         <NavigationMenu.Root className="max-width padding-x mx-auto flex items-center justify-between py-1.5  text-sm ">
+         <NavigationMenu.Root className="max-width padding-x mx-auto flex items-center justify-between py-1.5  text-xs md:text-sm ">
             <NavigationMenu.List className="flex gap-6">
                {navLinks
                   .filter((nav) => ['top', 'top-only'].includes(nav.position))
