@@ -1,11 +1,10 @@
 import Layout from 'Layout';
+import HeroSection from 'section/HeroSection';
 
 const Home = () => {
    return (
       <Layout>
-         <div className="h-20 bg-red-400 ">
-            <h1>Home</h1>
-         </div>
+         <HeroSection />
       </Layout>
    );
 };
