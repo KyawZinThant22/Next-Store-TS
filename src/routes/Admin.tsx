@@ -1,6 +1,6 @@
 import { useRoutes, Navigate } from 'react-router-dom';
 
-import { Layout } from './Elements';
+import { Home } from './Elements';
 
 const Admin = () => {
    return useRoutes([
@@ -10,7 +10,7 @@ const Admin = () => {
       },
       {
          path: '/home',
-         element: <Layout />,
+         element: <Home />,
       },
    ]);
 };

@@ -8,5 +8,5 @@ const Loadable = (Component: ElementType) => (props: any) =>
    );
 
 //layout
-
 export const Layout = Loadable(lazy(() => import('Layout/index')));
+export const Home = Loadable(lazy(() => import('section/Home/index')));
