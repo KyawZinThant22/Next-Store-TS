@@ -2,7 +2,7 @@ import { Button } from 'components/Elements';
 
 const HeroSection = () => {
    return (
-      <div className=" w-full  bg-blue-100">
+      <section className=" w-full  bg-blue-100">
          <div className="max-width padding-x  flex h-[500px] flex-col justify-center  md:h-[600px]">
             <div className="md:flex">
                <div className="flex flex-col gap-7 ">
@@ -24,7 +24,7 @@ const HeroSection = () => {
                </div>
             </div>
          </div>
-      </div>
+      </section>
    );
 };
 
