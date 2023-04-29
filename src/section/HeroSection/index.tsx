@@ -3,7 +3,7 @@ import { Button } from 'components/Elements';
 const HeroSection = () => {
    return (
       <div className=" w-full  bg-blue-100">
-         <div className="max-width padding-x  flex h-[600px] flex-col  justify-center">
+         <div className="max-width padding-x  flex h-[500px] flex-col justify-center  md:h-[600px]">
             <div className="md:flex">
                <div className="flex flex-col gap-7 ">
                   <h1 className="max-w-[650px] text-[2.4rem] font-bold leading-snug tracking-normal text-skin-jade md:text-[3.8rem]">
