@@ -5,6 +5,12 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "baseUrl": "src",
+    "paths": {
+      "@utils/*" : ["src/utils"],
+      "@icons/*" : ["src/assets/icons"],
+      "@components/*" : ["src/components"],
+      "@sections/*" : ["src/section"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -20,6 +26,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src","routes"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
