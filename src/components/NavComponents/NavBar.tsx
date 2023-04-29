@@ -3,6 +3,9 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { CartIcon, AccountIcon, CaretDownIcon } from 'assets/icons';
 import { Link } from 'react-router-dom';
 
+//component
+import { SearchBox } from '.';
+
 const NavBar = () => {
    return (
       <>
@@ -43,7 +46,7 @@ const NavBar = () => {
 
                <NavigationMenu.List className="   flex items-center gap-6">
                   <NavigationMenu.Item className="hidden items-center lg:flex">
-                     {/* <SearchBox /> */}
+                     <SearchBox />
                   </NavigationMenu.Item>
                   <NavigationMenu.Item className="flex cursor-pointer items-center  gap-2">
                      <AccountIcon />

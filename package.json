@@ -14,6 +14,7 @@
     "netlify:deploy": "netlify deploy --dir=./build -p -m \"$(git log -1 --pretty=%B)\""
   },
   "dependencies": {
+    "@radix-ui/react-form": "^0.0.2",
     "@radix-ui/react-navigation-menu": "^1.1.2",
     "eslint-config-prettier": "^8.8.0",
     "netlify-cli": "^14.3.1",
