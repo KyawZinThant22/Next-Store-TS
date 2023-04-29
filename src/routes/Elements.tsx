@@ -6,3 +6,7 @@ const Loadable = (Component: ElementType) => (props: any) =>
          <Component {...props} />
       </Suspense>
    );
+
+//layout
+
+export const Layout = Loadable(lazy(() => import('Layout/index')));
