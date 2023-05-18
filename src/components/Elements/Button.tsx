@@ -14,8 +14,7 @@ const buttonVariants = {
       backgroundColor: '#ffffff',
       color: '#013D28',
       transition: {
-         duration: 0.3,
-         yoyo: Infinity,
+         duration: 0.5,
       },
    },
 };
