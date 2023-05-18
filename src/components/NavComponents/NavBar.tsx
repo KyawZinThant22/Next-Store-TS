@@ -9,7 +9,7 @@ import { SearchBox } from '.';
 const NavBar = () => {
    return (
       <>
-         <header className="sticky top-0 z-20   ">
+         <header className="  ">
             <NavigationMenu.Root
                aria-label="primary"
                className="max-width padding-x flex items-center justify-between py-4  "
