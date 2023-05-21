@@ -1,6 +1,7 @@
 import { getBestdeal } from 'apis/bestdeal';
 import Header from 'components/Elements/Headers';
 import ProductCard from 'components/ProductCard';
+import ScrollReveal from 'components/ScrollReveal';
 import Category from 'components/category';
 import { useEffect, useState } from 'react';
 
@@ -32,25 +33,27 @@ const BestDeal = () => {
    }, [data.length, categoryName]);
 
    return (
-      <div className="max-width padding-x my-12 ">
-         <Header>Todays Best Deals For You!</Header>
-         <div className="my-6 flex flex-wrap items-center gap-3">
-            <button
-               className={`${
-                  categoryName === '' && 'bg-skin-jade text-white'
-               } cursor-pointer  rounded-full border p-2 px-4 text-sm font-medium text-black hover:bg-skin-jade hover:text-white`}
-               onClick={() => setCategoryName('')}
-            >
-               All
-            </button>
-            <Category setCategoryName={setCategoryName} categoryName={categoryName} />
+      <ScrollReveal>
+         <div className="max-width padding-x my-12 ">
+            <Header>Todays Best Deals For You!</Header>
+            <div className="my-6 flex flex-wrap items-center gap-3">
+               <button
+                  className={`${
+                     categoryName === '' && 'bg-skin-jade text-white'
+                  } cursor-pointer  rounded-full border p-2 px-4 text-sm font-medium text-black hover:bg-skin-jade hover:text-white`}
+                  onClick={() => setCategoryName('')}
+               >
+                  All
+               </button>
+               <Category setCategoryName={setCategoryName} categoryName={categoryName} />
+            </div>
+            <div className="mt-4 grid grid-cols-2 gap-6 overflow-x-scroll md:grid-cols-4">
+               {data.map((item) => (
+                  <ProductCard data={item} />
+               ))}
+            </div>
          </div>
-         <div className="mt-4 grid grid-cols-2 gap-6 overflow-x-scroll md:grid-cols-4">
-            {data.map((item) => (
-               <ProductCard data={item} />
-            ))}
-         </div>
-      </div>
+      </ScrollReveal>
    );
 };
 

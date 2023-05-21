@@ -2,6 +2,7 @@ import { getCategory } from 'apis/category';
 import { Headers } from 'components/Elements';
 import { useEffect, useState, useMemo } from 'react';
 import Card from './Card';
+import ScrollReveal from 'components/ScrollReveal';
 
 export interface ICategory {
    id: string;
@@ -32,19 +33,21 @@ const CategorySection = () => {
    }, [data.length, memoizedGetCategory]);
 
    return (
-      <div className="max-width padding-x my-16">
-         <Headers>Shop Our Top Categories</Headers>
+      <ScrollReveal>
+         <div className="max-width padding-x my-16">
+            <Headers>Shop Our Top Categories</Headers>
 
-         <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
-            {data && (
-               <>
-                  {data?.map((item) => (
-                     <Card item={item} key={item.id} />
-                  ))}
-               </>
-            )}
+            <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
+               {data && (
+                  <>
+                     {data?.map((item) => (
+                        <Card item={item} key={item.id} />
+                     ))}
+                  </>
+               )}
+            </div>
          </div>
-      </div>
+      </ScrollReveal>
    );
 };
 
