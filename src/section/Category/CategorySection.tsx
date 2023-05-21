@@ -31,8 +31,6 @@ const CategorySection = () => {
       }
    }, [data.length, memoizedGetCategory]);
 
-   console.log(data);
-
    return (
       <div className="max-width padding-x my-16">
          <Headers>Shop Our Top Categories</Headers>

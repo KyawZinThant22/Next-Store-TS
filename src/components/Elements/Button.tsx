@@ -7,6 +7,7 @@ interface IButtonProps {
    size?: 'sm' | 'md' | 'lg';
    type: 'submit' | 'button';
    arialabel: string;
+   className?: string;
 }
 
 const buttonVariants = {
@@ -19,7 +20,7 @@ const buttonVariants = {
    },
 };
 
-const Button = ({ label, action, variant, type, arialabel }: IButtonProps) => {
+const Button = ({ label, action, variant, type, arialabel, className }: IButtonProps) => {
    return (
       <AnimatePresence>
          <motion.button
@@ -32,9 +33,14 @@ const Button = ({ label, action, variant, type, arialabel }: IButtonProps) => {
             onClick={action}
             aria-label={arialabel}
             type={type}
-            className={`text-md rounded-full p-2 px-5 font-medium text-white md:p-3 md:px-6 md:text-lg ${
-               variant == 'contained' && 'border-2 border-skin-jade bg-skin-jade   font-bold '
-            } `}
+            className={` ${
+               className
+                  ? className
+                  : ` text-md rounded-full p-2 px-5 font-medium text-white md:p-3 md:px-6 md:text-lg ${
+                       variant == 'contained' &&
+                       'border-2 border-skin-jade bg-skin-jade   font-bold '
+                    } `
+            }`}
          >
             {label}
          </motion.button>

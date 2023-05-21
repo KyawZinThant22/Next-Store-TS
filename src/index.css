@@ -39,7 +39,7 @@ input:focus{
       @apply px-3 md:px-6
     }
     .max-width {
-        @apply mx-auto max-w-[1300px]
+        @apply mx-auto max-w-[1400px]
     }
     .maxWidth {
       @apply mx-auto max-w-[1400px]
