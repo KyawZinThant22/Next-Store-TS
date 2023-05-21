@@ -47,10 +47,15 @@ const BestDeal = () => {
                </button>
                <Category setCategoryName={setCategoryName} categoryName={categoryName} />
             </div>
+
             <div className="mt-4 grid grid-cols-2 gap-6 overflow-x-scroll md:grid-cols-4">
-               {data.map((item) => (
-                  <ProductCard data={item} />
-               ))}
+               {data.length > 0 ? (
+                  data.map((item) => <ProductCard data={item} />)
+               ) : (
+                  <>
+                     <h1>Not Available</h1>
+                  </>
+               )}
             </div>
          </div>
       </ScrollReveal>
