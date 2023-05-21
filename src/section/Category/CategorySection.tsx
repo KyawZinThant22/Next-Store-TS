@@ -39,7 +39,7 @@ const CategorySection = () => {
             {data && (
                <>
                   {data?.map((item) => (
-                     <Card item={item} />
+                     <Card item={item} key={item.id} />
                   ))}
                </>
             )}

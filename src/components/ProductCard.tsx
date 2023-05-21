@@ -1,6 +1,7 @@
 import { IBestDeal } from 'section/BestDeal/BestDeal';
-import { Button } from './Elements';
+
 import StarComponent from './Elements/StarCompoment';
+import { Love } from 'assets/icons';
 
 interface IData {
    data: IBestDeal;
@@ -8,7 +9,10 @@ interface IData {
 
 const ProductCard = ({ data }: IData) => {
    return (
-      <div className="bg my-12 flex flex-col">
+      <div className="bg relative my-2 flex flex-col">
+         <div className="absolute right-5 top-4 z-10 cursor-pointer rounded-full bg-white p-2 hover:bg-[#F9DCDC]">
+            <Love />
+         </div>
          <div className="hoverImg flex w-full items-center justify-center rounded-xl bg-[#f5f6f6]">
             <img src={data.image1} alt="product card" width={300} height={300} />
          </div>
@@ -21,15 +25,15 @@ const ProductCard = ({ data }: IData) => {
             <StarComponent star={5} />
          </div>
 
-         <div className="mt-4">
-            <Button
-               label="Add to Cart"
+         <div className="mt-4 cursor-pointer">
+            <button
                type="button"
-               arialabel="Add to cart botton"
-               variant="contained"
-               className="md:p:2 px-6x cursor-pointer rounded-full border border-black p-3 text-sm transition-transform  delay-100
-               hover:bg-skin-jade hover:text-white md:p-3"
-            />
+               aria-label="Add to cart botton"
+               className="md:p:2 cursor-pointer rounded-full border border-black p-3 text-sm transition-transform delay-100  hover:bg-skin-jade
+               hover:text-white md:p-3 md:px-6"
+            >
+               Add to Cart
+            </button>
          </div>
       </div>
    );

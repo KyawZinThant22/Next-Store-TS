@@ -34,7 +34,7 @@ const BestDeal = () => {
    return (
       <div className="max-width padding-x my-12 ">
          <Header>Todays Best Deals For You!</Header>
-         <div className="my-6 flex items-center gap-3">
+         <div className="my-6 flex flex-wrap items-center gap-3">
             <button
                className={`${
                   categoryName === '' && 'bg-skin-jade text-white'
