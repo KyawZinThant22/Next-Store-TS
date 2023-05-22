@@ -4,10 +4,9 @@ import { useInView } from 'react-intersection-observer';
 
 interface ScrollRevealProps {
    children: ReactNode;
-   delay?: number;
 }
 
-const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, delay = 0 }) => {
+const ScrollReveal: React.FC<ScrollRevealProps> = ({ children }) => {
    const [ref, inView] = useInView({
       triggerOnce: true,
       threshold: 0.2,
@@ -30,6 +29,8 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, delay = 0 }) => {
    useEffect(() => {
       if (inView) {
          controls.start('visible');
+      } else {
+         controls.start('hidden');
       }
    }, [controls, inView]);
 
@@ -39,7 +40,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, delay = 0 }) => {
          opacity: 1,
          y: 0,
          scale: 1,
-         transition: { duration: 0.7, ease: 'easeOut', delay },
+         transition: { duration: 0.7, ease: 'easeOut' },
       },
    };
 
