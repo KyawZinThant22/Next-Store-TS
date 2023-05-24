@@ -1,5 +1,5 @@
 import Layout from 'Layout';
-import Divider from 'components/Elements/Divider';
+import { Divider } from 'components/Elements';
 import BestDeal from 'section/BestDeal/BestDeal';
 import { CategorySection } from 'section/Category';
 import HeroSection from 'section/HeroSection';

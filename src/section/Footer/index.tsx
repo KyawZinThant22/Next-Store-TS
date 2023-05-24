@@ -1,11 +1,31 @@
+import { CaseIcon, GiftIcon, HelpIcon } from 'assets/icons';
 import Divider from 'components/Elements/Divider';
 import ScrollReveal from 'components/ScrollReveal';
 import { Link } from 'react-router-dom';
+
+interface Iterms {
+   text: string;
+   icon: any;
+}
 
 const department = ['Fashion', 'Tech', 'Book', 'Travel', 'seankers'];
 const about = ['News and Blog', 'Career', 'Help', 'Idea by guide', 'Shop and Location'];
 const service = ['Gift card', 'Mobile App', 'Delivery', 'Order pickup'];
 const help = ['Return', 'Track Order', 'Contact Us'];
+const terms: Iterms[] = [
+   {
+      text: 'Become Seller',
+      icon: <CaseIcon />,
+   },
+   {
+      text: 'Gift Card',
+      icon: <GiftIcon />,
+   },
+   {
+      text: 'Help Center',
+      icon: <HelpIcon />,
+   },
+];
 
 const Footer = () => {
    return (
@@ -64,7 +84,24 @@ const Footer = () => {
                   </div>
                </div>
             </div>
-            <Divider />
+            <Divider className="mt-8" />
+            <div className="flex w-full items-center justify-between">
+               <div className="flex items-center  gap-4">
+                  {terms.map((item) => (
+                     <div className="flex items-center gap-3">
+                        {item.icon}
+                        <p className="text-[18px] font-[500]">{item.text}</p>
+                     </div>
+                  ))}
+               </div>
+               <div className="text-md flex items-center gap-4 font-semibold">
+                  <p>Terms of service</p>
+                  <p>Privacy and Policy</p>
+               </div>
+               <div className="text-md flex items-center gap-4 font-semibold">
+                  <p>All Right reserved by Kyaw Zin Thant | 2023</p>
+               </div>
+            </div>
          </footer>
       </ScrollReveal>
    );
