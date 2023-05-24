@@ -5,10 +5,33 @@ import { Link } from 'react-router-dom';
 
 //component
 import { SearchBox } from '.';
+import useScroll from 'utils/useScroll';
+import { useEffect, useState } from 'react';
 
 const NavBar = () => {
+   const [navClassList, setNavClassList] = useState<string[]>([]);
+   const scroll = useScroll();
+
+   const [openNav, setOpenNav] = useState(false);
+
+   const closeNav = () => {
+      setOpenNav(false);
+   };
+
+   useEffect(() => {
+      document.body.style.overflowY = openNav ? 'hidden' : 'scroll';
+   }, [openNav]);
+
+   // add shadow to nav (with classList) on scroll
+   useEffect(() => {
+      const _classList = [];
+
+      if (scroll.y > 25) _classList.push('!shadow');
+
+      setNavClassList(_classList);
+   }, [scroll.y]);
    return (
-      <nav className="fixed left-0 right-0 top-0 z-50 bg-white shadow">
+      <header className={`sticky top-0 z-20 bg-white ${navClassList.join(' ')}`}>
          <NavigationMenu.Root
             aria-label="primary"
             className="max-width padding-x  flex items-center justify-between  py-4 "
@@ -57,7 +80,7 @@ const NavBar = () => {
                </NavigationMenu.Item>
             </NavigationMenu.List>
          </NavigationMenu.Root>
-      </nav>
+      </header>
    );
 };
 
