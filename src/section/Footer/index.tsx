@@ -88,7 +88,7 @@ const Footer = () => {
             <div className="grid w-full grid-cols-12 space-y-4 md:space-y-0">
                <div className="col-span-12 flex items-center gap-4  md:col-span-5">
                   {terms.map((item) => (
-                     <div className="flex items-center gap-3">
+                     <div key={item.text} className="flex items-center gap-3">
                         {item.icon}
                         <p className="text-sm font-[500] md:text-[16px]">{item.text}</p>
                      </div>

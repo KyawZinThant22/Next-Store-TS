@@ -1,6 +1,10 @@
 import Routes from './routes/index';
 function App() {
-   return <Routes />;
+   return (
+      <>
+         <Routes />
+      </>
+   );
 }
 
 export default App;

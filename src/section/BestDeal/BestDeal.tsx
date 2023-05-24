@@ -50,7 +50,7 @@ const BestDeal = () => {
 
             <div className="mt-4 grid grid-cols-2 gap-6 overflow-x-scroll md:grid-cols-4">
                {data.length > 0 ? (
-                  data.map((item) => <ProductCard data={item} />)
+                  data.map((item) => <ProductCard key={item.id} data={item} />)
                ) : (
                   <>
                      <h1>Not Available</h1>

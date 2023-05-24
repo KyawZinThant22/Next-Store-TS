@@ -2,14 +2,25 @@ import { IBestDeal } from 'section/BestDeal/BestDeal';
 
 import StarComponent from './Elements/StarCompoment';
 import { Love } from 'assets/icons';
-
+import { Link } from 'react-router-dom';
+import slugify from 'slugify';
 interface IData {
    data: IBestDeal;
 }
 
 const ProductCard = ({ data }: IData) => {
+   // const handleDetailsCard = (id: string) => {
+   //    navigate(`/home/product/${slugify(data.name)}`, {
+   //       state: {
+   //          id: id,
+   //       },
+   //    });
+   // };home/products/one
    return (
-      <div className="bg relative my-2 flex flex-col">
+      <Link
+         to={`/home/products/${slugify(data.name)}`}
+         className="bg relative my-2 flex cursor-pointer flex-col"
+      >
          <div className="absolute right-5 top-4 z-10 cursor-pointer rounded-full bg-white p-2 hover:bg-[#F9DCDC]">
             <Love />
          </div>
@@ -35,7 +46,7 @@ const ProductCard = ({ data }: IData) => {
                Add to Cart
             </button>
          </div>
-      </div>
+      </Link>
    );
 };
 

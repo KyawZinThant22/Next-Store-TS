@@ -11,7 +11,7 @@ export interface IService {
 const service: IService[] = [
    {
       heading: `Frequently Asked Questions`,
-      desc: 'Updates on safe Shopping in our Stores',
+      desc: 'Updates on safe Shopping in our help',
       image: 'https://shorturl.at/BDMQ6',
    },
    {
@@ -21,7 +21,7 @@ const service: IService[] = [
    },
    {
       heading: 'Home Delivery Options',
-      desc: 'Updates on safe Shopping in our Stores',
+      desc: 'Updates on safe Shopping with our cars',
       image: 'https://shorturl.at/mosvK',
    },
 ];
@@ -33,7 +33,7 @@ const Service = () => {
             <Header>Services To Help You Shop</Header>
             <div className="my-12 grid grid-cols-2 gap-5 md:grid-cols-3">
                {service.map((item) => (
-                  <ServiceCard data={item} />
+                  <ServiceCard key={item.desc} data={item} />
                ))}
             </div>
          </div>
