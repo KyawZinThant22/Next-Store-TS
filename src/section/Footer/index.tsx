@@ -85,20 +85,20 @@ const Footer = () => {
                </div>
             </div>
             <Divider className="mt-8" />
-            <div className="flex w-full items-center justify-between">
-               <div className="flex items-center  gap-4">
+            <div className="grid w-full grid-cols-12 space-y-4 md:space-y-0">
+               <div className="col-span-12 flex items-center gap-4  md:col-span-5">
                   {terms.map((item) => (
                      <div className="flex items-center gap-3">
                         {item.icon}
-                        <p className="text-[18px] font-[500]">{item.text}</p>
+                        <p className="text-sm font-[500] md:text-[16px]">{item.text}</p>
                      </div>
                   ))}
                </div>
-               <div className="text-md flex items-center gap-4 font-semibold">
+               <div className="md:text-md col-span-12 flex items-center gap-4 text-sm font-semibold md:col-span-3">
                   <p>Terms of service</p>
                   <p>Privacy and Policy</p>
                </div>
-               <div className="text-md flex items-center gap-4 font-semibold">
+               <div className="md:text-md col-span-12 flex items-center gap-4 text-sm font-semibold md:col-span-4">
                   <p>All Right reserved by Kyaw Zin Thant | 2023</p>
                </div>
             </div>
