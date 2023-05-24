@@ -23,11 +23,7 @@ const Admin = () => {
             },
             {
                path: 'products/:name',
-               element: (
-                  <>
-                     <h1>love</h1>
-                  </>
-               ),
+               element: <ProductDetails />,
             },
          ],
       },
