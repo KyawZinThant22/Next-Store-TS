@@ -1,13 +1,13 @@
 import { Topbar, Navbar } from 'components/NavComponents/index';
-import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 import Footer from 'section/Footer';
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = () => {
    return (
       <>
          <Topbar />
          <Navbar />
-         {children}
+         <Outlet />
          <Footer />
       </>
    );

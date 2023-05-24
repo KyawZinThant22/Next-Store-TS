@@ -1,6 +1,7 @@
 import { useRoutes, Navigate } from 'react-router-dom';
 
 import { Home, ProductDetails } from './Elements';
+import Layout from 'Layout';
 
 const Admin = () => {
    return useRoutes([
@@ -10,7 +11,7 @@ const Admin = () => {
       },
       {
          path: 'home',
-
+         element: <Layout />,
          children: [
             {
                path: '',
@@ -18,7 +19,7 @@ const Admin = () => {
             },
             {
                path: 'products',
-               element: <h1>Product Listing Page</h1>,
+               element: <ProductDetails />,
             },
             {
                path: 'products/:name',

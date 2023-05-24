@@ -1,4 +1,3 @@
-import Layout from 'Layout';
 import { Divider } from 'components/Elements';
 import BestDeal from 'section/BestDeal/BestDeal';
 import { CategorySection } from 'section/Category';
@@ -7,13 +6,13 @@ import Service from 'section/Service';
 
 const Home = () => {
    return (
-      <Layout>
+      <>
          <HeroSection />
          <CategorySection />
          <BestDeal />
          <Service />
          <Divider />
-      </Layout>
+      </>
    );
 };
 
