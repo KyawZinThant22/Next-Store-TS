@@ -8,10 +8,10 @@ import { SearchBox } from '.';
 
 const NavBar = () => {
    return (
-      <>
+      <nav className="fixed left-0 right-0 top-0 z-50 bg-white shadow">
          <NavigationMenu.Root
             aria-label="primary"
-            className="max-width padding-x flex items-center justify-between py-4  "
+            className="max-width padding-x  flex items-center justify-between  py-4 "
          >
             <div className="mr-8 flex justify-center md:justify-start lg:hidden">
                <Link to="/" className="font-serif text-xl font-[600]  md:text-2xl">
@@ -57,7 +57,7 @@ const NavBar = () => {
                </NavigationMenu.Item>
             </NavigationMenu.List>
          </NavigationMenu.Root>
-      </>
+      </nav>
    );
 };
 
