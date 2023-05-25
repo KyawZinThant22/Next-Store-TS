@@ -8,6 +8,7 @@ interface IButtonProps {
    type: 'submit' | 'button';
    arialabel: string;
    className?: string;
+   noHover?: boolean;
 }
 
 const buttonVariants = {
@@ -20,12 +21,20 @@ const buttonVariants = {
    },
 };
 
-const Button = ({ label, action, variant, type, arialabel, className }: IButtonProps) => {
+const Button = ({
+   label,
+   action,
+   variant,
+   type,
+   arialabel,
+   className,
+   noHover = false,
+}: IButtonProps) => {
    return (
       <AnimatePresence>
          <motion.button
             variants={buttonVariants}
-            whileHover="hover"
+            whileHover={!noHover && variant === 'contained' ? 'hover' : ''}
             exit={{
                background: '#013D28',
                color: '#fff',
@@ -36,10 +45,12 @@ const Button = ({ label, action, variant, type, arialabel, className }: IButtonP
             className={` ${
                className
                   ? className
-                  : ` text-md rounded-full p-2 px-5 font-medium text-white md:p-3 md:px-6 md:text-lg ${
-                       variant == 'contained' &&
-                       'border-2 border-skin-jade bg-skin-jade   font-bold '
-                    } `
+                  : ` text-md flex h-full w-full items-center justify-center rounded-full p-2 px-5 font-medium  md:p-3 md:px-6 md:text-lg ${
+                       variant === 'contained' &&
+                       'border-2 border-skin-jade bg-skin-jade font-bold text-white '
+                    } 
+                    ${variant === 'outline' && ' border border-skin-jade text-skin-jade '}
+                    `
             }`}
          >
             {label}
