@@ -68,9 +68,9 @@ const ProductDetails: React.FC = () => {
                <div className="hoverImg flex max-h-[600px] max-w-[600px] items-center justify-center rounded-xl bg-[#f5f6f6] md:h-[500px] md:w-[600px]">
                   <img src={data?.image1} alt={data?.name} width={400} height={400} />
                </div>
-               <div className="mt-4 flex items-end gap-3  ">
+               <div className="mt-4 flex items-end  gap-3  ">
                   {[1, 2, 3, 4].map(() => (
-                     <div className="hoverImg  flex max-h-[200px] max-w-[200px] items-center justify-center  rounded-xl bg-[#f5f6f6] md:h-[140px] md:w-[140px]">
+                     <div className="hoverImg  flex max-h-[400px] max-w-[400px] items-center justify-center  rounded-xl bg-[#f5f6f6] md:h-[140px] md:w-[140px]">
                         <img src={data?.image1} alt={data?.name} width={80} height={80} />
                      </div>
                   ))}
@@ -141,12 +141,12 @@ const ProductDetails: React.FC = () => {
                         <BussIcon className="mt-[2px] h-5 w-5 items-start justify-start" />
                         <div>
                            <span className="text-sm font-medium ">Free Delivery</span>
-                           <p className="cursor-pointer text-xs text-[#333333cd] underline">
+                           <p className="mb-0 cursor-pointer text-xs text-[#333333cd] underline">
                               Enter your postal code for Delivery Availability
                            </p>
                         </div>
                      </div>
-                     <Divider className="my-0 mt-0 border-[1px] border-[#F5F6F6]" />
+                     <Divider className="my-6 mt-6 border-[1px]" />
                      <div className=" my-4 flex  gap-2 px-4">
                         <ReturnIcon className="mt-[2px] h-5 w-5 items-start justify-start" />
                         <div>
