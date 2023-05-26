@@ -1,10 +1,32 @@
 import { Button, Divider } from 'components/Elements';
 import StarComponent from 'components/Elements/StarCompoment';
-import React, { useState, ChangeEvent } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, ChangeEvent, useEffect } from 'react';
+
 import { motion } from 'framer-motion';
+import { BussIcon, ReturnIcon } from 'assets/icons';
+import { useLocation } from 'react-router-dom';
+import { FetchProductDetails } from 'apis/product';
+
+interface IBestDeal {
+   id: string;
+   name: string;
+   discountPercent: number;
+   price: string;
+   description: string;
+   detail: string;
+   stock: number;
+   categoryId: string;
+   image1: string;
+   createdAt: string;
+   updatedAt: string | null;
+   tagId: string | null;
+}
+
 const ProductDetails: React.FC = () => {
-   const { name } = useParams<{ name: string }>();
+   const location = useLocation();
+
+   const [data, setData] = useState<IBestDeal | null>(null);
+
    const [counter, setCounter] = useState<number>(1);
 
    const handleIncrement = () => {
@@ -24,34 +46,39 @@ const ProductDetails: React.FC = () => {
       }
    };
 
+   const fetchProductDetail = async (id: string) => {
+      const response = await FetchProductDetails(id);
+      if (response.data.success) {
+         setData(response.data.data);
+      } else {
+         alert('Fetch product details failed');
+      }
+   };
+
+   useEffect(() => {
+      if (location.state) {
+         fetchProductDetail(location.state.id);
+      }
+   }, [location]);
+
    return (
       <div className="padding-x max-width my-12">
          <div className="grid grid-cols-2">
             <div className="col-span-2 items-center justify-center md:col-span-1 md:justify-start ">
                <div className="hoverImg flex max-h-[600px] max-w-[600px] items-center justify-center rounded-xl bg-[#f5f6f6] md:h-[500px] md:w-[600px]">
-                  <img
-                     src={'https://shorturl.at/EGPTY'}
-                     alt="product card"
-                     width={400}
-                     height={400}
-                  />
+                  <img src={data?.image1} alt={data?.name} width={400} height={400} />
                </div>
                <div className="mt-4 flex items-end gap-3  ">
                   {[1, 2, 3, 4].map(() => (
                      <div className="hoverImg  flex max-h-[200px] max-w-[200px] items-center justify-center  rounded-xl bg-[#f5f6f6] md:h-[140px] md:w-[140px]">
-                        <img
-                           src={'https://shorturl.at/EGPTY'}
-                           alt="product card"
-                           width={80}
-                           height={80}
-                        />
+                        <img src={data?.image1} alt={data?.name} width={80} height={80} />
                      </div>
                   ))}
                </div>
             </div>
 
             <div className="col-span-2 md:col-span-1 ">
-               <h1 className="text-3xl font-[600] leading-normal">AirPod Max</h1>
+               <h1 className="text-3xl font-[600] leading-normal">{data?.name}</h1>
                <p className="mt-2 text-sm text-[#777]">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident fugit qui
                   harum, labore quis dolorem quisquam neque quas maiores, exercitationem veritatis
@@ -87,7 +114,9 @@ const ProductDetails: React.FC = () => {
                      </div>
                      <div>
                         <p className="text-sm leading-normal tracking-wider">
-                           Only <span className=" text-orange-400">12 items</span> Left! <br />
+                           Only{' '}
+                           <span className=" font-bold text-orange-400">{data?.stock} items</span>{' '}
+                           Left! <br />
                            Don't miss it{' '}
                         </p>
                      </div>
@@ -106,6 +135,27 @@ const ProductDetails: React.FC = () => {
                         arialabel="buy now button"
                         variant="outline"
                      />
+                  </div>
+                  <div className="mt-3 w-full rounded border">
+                     <div className=" my-4 flex  gap-2 px-4">
+                        <BussIcon className="mt-[2px] h-5 w-5 items-start justify-start" />
+                        <div>
+                           <span className="text-sm font-medium ">Free Delivery</span>
+                           <p className="cursor-pointer text-xs text-[#333333cd] underline">
+                              Enter your postal code for Delivery Availability
+                           </p>
+                        </div>
+                     </div>
+                     <Divider className="my-0 mt-0 border-[1px] border-[#F5F6F6]" />
+                     <div className=" my-4 flex  gap-2 px-4">
+                        <ReturnIcon className="mt-[2px] h-5 w-5 items-start justify-start" />
+                        <div>
+                           <span className="text-sm font-medium ">Return Delivery</span>
+                           <p className="cursor-pointer text-xs text-[#333333cd] underline">
+                              Free 30 days delivery return
+                           </p>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>

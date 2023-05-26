@@ -8,3 +8,5 @@ export { default as Love } from './Love';
 export { default as GiftIcon } from './GiftIcons';
 export { default as HelpIcon } from './HelpIcon';
 export { default as CaseIcon } from './CaseIcon';
+export { default as BussIcon } from './BusIcon';
+export { default as ReturnIcon } from './ReturnIcon';

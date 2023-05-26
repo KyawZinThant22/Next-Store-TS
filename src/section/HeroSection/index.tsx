@@ -48,7 +48,7 @@ const HeroSection = () => {
                         Shopping is a bit of a relaxing hobby for me, which is sometimes troubling
                         for the bank balance.
                      </motion.p>
-                     <motion.div variants={elements}>
+                     <motion.div variants={elements} className="w-[200px]">
                         <Button
                            variant="contained"
                            label="Learn More"

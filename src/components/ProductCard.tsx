@@ -8,17 +8,13 @@ interface IData {
    data: IBestDeal;
 }
 
-const ProductCard = ({ data }: IData) => {
-   // const handleDetailsCard = (id: string) => {
-   //    navigate(`/home/product/${slugify(data.name)}`, {
-   //       state: {
-   //          id: id,
-   //       },
-   //    });
-   // };home/products/one
+const ProductCard: React.FC<IData> = ({ data }) => {
    return (
       <Link
          to={`/home/products/${slugify(data.name)}`}
+         state={{
+            id: data.id,
+         }}
          className="bg relative my-2 flex cursor-pointer flex-col"
       >
          <div className="absolute right-5 top-4 z-10 cursor-pointer rounded-full bg-white p-2 hover:bg-[#F9DCDC]">
