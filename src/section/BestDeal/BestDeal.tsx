@@ -3,6 +3,7 @@ import Header from 'components/Elements/Headers';
 import ProductCard from 'components/ProductCard';
 import ScrollReveal from 'components/ScrollReveal';
 import Category from 'components/category';
+import ProductSkeleton from 'components/skeletons/ProductSkeleton';
 import { useEffect, useState } from 'react';
 
 export interface IBestDeal {
@@ -14,6 +15,7 @@ export interface IBestDeal {
 }
 
 const BestDeal = () => {
+   const [isLoading, setIsLoading] = useState(true);
    const [data, setData] = useState<IBestDeal[]>([]);
    const [categoryName, setCategoryName] = useState<string>('');
 
@@ -32,6 +34,14 @@ const BestDeal = () => {
       fetchData(categoryName);
    }, [data.length, categoryName]);
 
+   useEffect(() => {
+      const timer = setTimeout(() => {
+         setIsLoading(false);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+   }, []);
+
    return (
       <ScrollReveal>
          <div className="max-width padding-x my-12 ">
@@ -48,12 +58,22 @@ const BestDeal = () => {
                <Category setCategoryName={setCategoryName} categoryName={categoryName} />
             </div>
 
-            <div className="mt-4 grid grid-cols-2 gap-6 overflow-x-scroll md:grid-cols-4">
-               {data.length > 0 ? (
-                  data.map((item) => <ProductCard key={item.id} data={item} />)
+            <div className="mt-4 grid grid-cols-2 gap-4 overflow-x-scroll md:grid-cols-4">
+               {isLoading || !data ? (
+                  <>
+                     {[...Array(8)].map((_, index) => (
+                        <ProductSkeleton key={index} />
+                     ))}
+                  </>
                ) : (
                   <>
-                     <h1>Not Available</h1>
+                     {data.length > 0 ? (
+                        data.map((item) => <ProductCard key={item.id} data={item} />)
+                     ) : (
+                        <>
+                           <h1>Not Available</h1>
+                        </>
+                     )}
                   </>
                )}
             </div>
