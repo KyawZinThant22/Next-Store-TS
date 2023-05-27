@@ -4,11 +4,20 @@ import StarComponent from './Elements/StarCompoment';
 import { Love } from 'assets/icons';
 import { Link } from 'react-router-dom';
 import slugify from 'slugify';
+import { useAppDispatch } from 'store/hook';
+import { addToCart } from 'store/reducers/cartStore';
 interface IData {
    data: IBestDeal;
 }
 
 const ProductCard: React.FC<IData> = ({ data }) => {
+   const dispatch = useAppDispatch();
+
+   const handleAddtoCart = (data: IBestDeal) => {
+      const { description, image1, ...dataWithoutDescription } = data;
+      const ItemData = { ...dataWithoutDescription, image: image1 };
+      dispatch(addToCart(ItemData));
+   };
    return (
       <div className="bg relative my-2 flex cursor-pointer flex-col">
          <Link
@@ -35,6 +44,7 @@ const ProductCard: React.FC<IData> = ({ data }) => {
 
          <div className="mt-4 cursor-pointer">
             <button
+               onClick={() => handleAddtoCart(data)}
                type="button"
                aria-label="Add to cart botton"
                className="md:p:2 cursor-pointer rounded-full border border-black p-3 text-sm transition-transform delay-100  hover:bg-skin-jade
