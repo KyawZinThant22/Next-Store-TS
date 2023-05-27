@@ -1,6 +1,6 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 
-import { CartIcon, AccountIcon, CaretDownIcon } from 'assets/icons';
+import { AccountIcon, CaretDownIcon } from 'assets/icons';
 import { Link } from 'react-router-dom';
 
 //component
@@ -74,10 +74,10 @@ const NavBar = () => {
                   <AccountIcon />
                   <Link to="/account">Account</Link>
                </NavigationMenu.Item>
-               <NavigationMenu.Item className="flex cursor-pointer items-center gap-2">
+               {/* <NavigationMenu.Item className="flex cursor-pointer items-center gap-2">
                   <CartIcon />
                   Cart
-               </NavigationMenu.Item>
+               </NavigationMenu.Item> */}
             </NavigationMenu.List>
          </NavigationMenu.Root>
       </header>

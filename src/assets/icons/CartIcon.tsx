@@ -2,13 +2,13 @@ import { SVGProps } from 'react';
 const CartIcon = (props: SVGProps<SVGSVGElement>) => (
    <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
-      fill="none"
+      className="h-3 w-3"
+      fill="black"
       viewBox="0 0 24 24"
       {...props}
    >
       <path
-         stroke="#000"
+         stroke="#fff"
          strokeLinecap="round"
          strokeLinejoin="round"
          strokeWidth={1.5}
