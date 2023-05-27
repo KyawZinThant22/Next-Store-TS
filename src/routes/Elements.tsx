@@ -14,3 +14,7 @@ export const Home = Loadable(lazy(() => import('section/Home/index')));
 //product
 
 export const ProductDetails = Loadable(lazy(() => import('components/ProductCard/ProductDetail')));
+
+//checkout
+
+export const Checkout = Loadable(lazy(() => import('components/Checkout/index')));

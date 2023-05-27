@@ -1,6 +1,6 @@
 import { useRoutes, Navigate } from 'react-router-dom';
 
-import { Home, ProductDetails } from './Elements';
+import { Home, ProductDetails, Checkout } from './Elements';
 import Layout from 'Layout';
 
 const Admin = () => {
@@ -24,6 +24,10 @@ const Admin = () => {
             {
                path: 'products/:name',
                element: <ProductDetails />,
+            },
+            {
+               path: 'checkout',
+               element: <Checkout />,
             },
          ],
       },
