@@ -1,8 +1,14 @@
-import { useAppSelector } from 'store/hook';
+import { useAppDispatch, useAppSelector } from 'store/hook';
+import { removeItem } from 'store/reducers/cartStore';
 import { RootState } from 'store/store';
 
 const Checkout = () => {
    const { cart } = useAppSelector((state: RootState) => state.cart);
+   const dispatch = useAppDispatch();
+
+   const handleRemoveItem = (id: string) => {
+      dispatch(removeItem(id));
+   };
    return (
       <div className="max-width padding-x">
          {cart.map((item) => (
@@ -11,6 +17,12 @@ const Checkout = () => {
                <p>{item.name}</p>
                <p>{item.quantity}</p>
                <p>{item.price}</p>
+               <button
+                  onClick={() => handleRemoveItem(item.id)}
+                  className="h-10 w-10 cursor-pointer bg-red-400 text-white "
+               >
+                  X
+               </button>
             </div>
          ))}
       </div>
