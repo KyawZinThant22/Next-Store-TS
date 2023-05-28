@@ -7,6 +7,7 @@ import { BussIcon, ReturnIcon } from 'assets/icons';
 import { useLocation } from 'react-router-dom';
 import { FetchProductDetails } from 'apis/product';
 import { Helmet } from 'react-helmet';
+import Breadcrumb from 'components/Elements/Breadcrumb';
 
 interface IBestDeal {
    id: string;
@@ -68,7 +69,10 @@ const ProductDetails: React.FC = () => {
             <title>Next-Store - Product Details</title>
             <meta name="description" content="Product Details page" />
          </Helmet>
-         <div className="padding-x max-width my-12">
+         <div className="padding-x max-width my-6">
+            <div className="my-4">
+               <Breadcrumb pathname={location.pathname} />
+            </div>
             <div className="grid grid-cols-2">
                <div className="col-span-2 items-center justify-center md:col-span-1 md:justify-start ">
                   <div className="hoverImg flex max-h-[600px] max-w-[600px] items-center justify-center rounded-xl bg-[#f5f6f6] md:h-[500px] md:w-[600px]">
