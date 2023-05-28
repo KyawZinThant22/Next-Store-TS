@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { BussIcon, ReturnIcon } from 'assets/icons';
 import { useLocation } from 'react-router-dom';
 import { FetchProductDetails } from 'apis/product';
+import { Helmet } from 'react-helmet';
 
 interface IBestDeal {
    id: string;
@@ -62,105 +63,114 @@ const ProductDetails: React.FC = () => {
    }, [location]);
 
    return (
-      <div className="padding-x max-width my-12">
-         <div className="grid grid-cols-2">
-            <div className="col-span-2 items-center justify-center md:col-span-1 md:justify-start ">
-               <div className="hoverImg flex max-h-[600px] max-w-[600px] items-center justify-center rounded-xl bg-[#f5f6f6] md:h-[500px] md:w-[600px]">
-                  <img src={data?.image1} alt={data?.name} width={400} height={400} />
-               </div>
-               <div className="mt-4 flex items-end  gap-3  ">
-                  {[1, 2, 3, 4].map(() => (
-                     <div className="hoverImg  flex max-h-[400px] max-w-[400px] items-center justify-center  rounded-xl bg-[#f5f6f6] md:h-[140px] md:w-[140px]">
-                        <img src={data?.image1} alt={data?.name} width={80} height={80} />
-                     </div>
-                  ))}
-               </div>
-            </div>
-
-            <div className="col-span-2 md:col-span-1 ">
-               <h1 className="text-3xl font-[600] leading-normal">{data?.name}</h1>
-               <p className="mt-2 text-sm text-[#777]">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident fugit qui
-                  harum, labore quis dolorem quisquam neque quas maiores, exercitationem veritatis
-                  vitae obcaecati expedita laudantium, officia incidunt inventore similique in.
-               </p>
-               <div className="mt-4">
-                  <StarComponent star={5} />
-               </div>
-
-               <Divider className="my-6 mt-6 " />
-               <div className="flex flex-col gap-3 ">
-                  <h1 className="text-2xl font-semibold">$549.00 or 99.99/month</h1>
-                  <p className="text-sm">suggested payment with six months finance</p>
-               </div>
-               <Divider className="my-6 mt-6 " />
-               <div className="flex flex-col gap-4">
-                  <div className=" flex items-center gap-4">
-                     <div className="text-md flex h-[50px] w-[160px] items-center justify-center overflow-hidden rounded-full bg-[#f5f6f6] text-[#013D28]">
-                        <CounterButton onClick={handleDecrement} className="hover:bg-red-400">
-                           -
-                        </CounterButton>
-
-                        <input
-                           className="mx-2 w-[20px] appearance-none border-none   bg-transparent text-center text-black"
-                           type="number"
-                           min="1"
-                           onChange={handleCounterChange}
-                           value={counter.toString()}
-                        />
-                        <CounterButton onClick={handleIncrement} className="hover:bg-red-400">
-                           +
-                        </CounterButton>
-                     </div>
-                     <div>
-                        <p className="text-sm leading-normal tracking-wider">
-                           Only{' '}
-                           <span className=" font-bold text-orange-400">{data?.stock} items</span>{' '}
-                           Left! <br />
-                           Don't miss it{' '}
-                        </p>
-                     </div>
+      <>
+         <Helmet>
+            <title>Next-Store - Product Details</title>
+            <meta name="description" content="Product Details page" />
+         </Helmet>
+         <div className="padding-x max-width my-12">
+            <div className="grid grid-cols-2">
+               <div className="col-span-2 items-center justify-center md:col-span-1 md:justify-start ">
+                  <div className="hoverImg flex max-h-[600px] max-w-[600px] items-center justify-center rounded-xl bg-[#f5f6f6] md:h-[500px] md:w-[600px]">
+                     <img src={data?.image1} alt={data?.name} width={400} height={400} />
                   </div>
-                  <div className="mt-4 flex h-[49px] w-[70%] items-center gap-4 ">
-                     <Button
-                        label="Buy now"
-                        type="button"
-                        arialabel="buy now button"
-                        variant="contained"
-                     />
-
-                     <Button
-                        label="Add to Cart"
-                        type="button"
-                        arialabel="buy now button"
-                        variant="outline"
-                     />
+                  <div className="mt-4 flex items-end  gap-3  ">
+                     {[1, 2, 3, 4].map(() => (
+                        <div className="hoverImg  flex max-h-[400px] max-w-[400px] items-center justify-center  rounded-xl bg-[#f5f6f6] md:h-[140px] md:w-[140px]">
+                           <img src={data?.image1} alt={data?.name} width={80} height={80} />
+                        </div>
+                     ))}
                   </div>
-                  <div className="mt-3 w-full rounded border">
-                     <div className=" my-4 flex  gap-2 px-4">
-                        <BussIcon className="mt-[2px] h-5 w-5 items-start justify-start" />
+               </div>
+
+               <div className="col-span-2 md:col-span-1 ">
+                  <h1 className="text-3xl font-[600] leading-normal">{data?.name}</h1>
+                  <p className="mt-2 text-sm text-[#777]">
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident fugit qui
+                     harum, labore quis dolorem quisquam neque quas maiores, exercitationem
+                     veritatis vitae obcaecati expedita laudantium, officia incidunt inventore
+                     similique in.
+                  </p>
+                  <div className="mt-4">
+                     <StarComponent star={5} />
+                  </div>
+
+                  <Divider className="my-6 mt-6 " />
+                  <div className="flex flex-col gap-3 ">
+                     <h1 className="text-2xl font-semibold">$549.00 or 99.99/month</h1>
+                     <p className="text-sm">suggested payment with six months finance</p>
+                  </div>
+                  <Divider className="my-6 mt-6 " />
+                  <div className="flex flex-col gap-4">
+                     <div className=" flex items-center gap-4">
+                        <div className="text-md flex h-[50px] w-[160px] items-center justify-center overflow-hidden rounded-full bg-[#f5f6f6] text-[#013D28]">
+                           <CounterButton onClick={handleDecrement} className="hover:bg-red-400">
+                              -
+                           </CounterButton>
+
+                           <input
+                              className="mx-2 w-[20px] appearance-none border-none   bg-transparent text-center text-black"
+                              type="number"
+                              min="1"
+                              onChange={handleCounterChange}
+                              value={counter.toString()}
+                           />
+                           <CounterButton onClick={handleIncrement} className="hover:bg-red-400">
+                              +
+                           </CounterButton>
+                        </div>
                         <div>
-                           <span className="text-sm font-medium ">Free Delivery</span>
-                           <p className="mb-0 cursor-pointer text-xs text-[#333333cd] underline">
-                              Enter your postal code for Delivery Availability
+                           <p className="text-sm leading-normal tracking-wider">
+                              Only{' '}
+                              <span className=" font-bold text-orange-400">
+                                 {data?.stock} items
+                              </span>{' '}
+                              Left! <br />
+                              Don't miss it{' '}
                            </p>
                         </div>
                      </div>
-                     <Divider className="my-6 mt-6 border-[1px]" />
-                     <div className=" my-4 flex  gap-2 px-4">
-                        <ReturnIcon className="mt-[2px] h-5 w-5 items-start justify-start" />
-                        <div>
-                           <span className="text-sm font-medium ">Return Delivery</span>
-                           <p className="cursor-pointer text-xs text-[#333333cd] underline">
-                              Free 30 days delivery return
-                           </p>
+                     <div className="mt-4 flex h-[49px] w-[70%] items-center gap-4 ">
+                        <Button
+                           label="Buy now"
+                           type="button"
+                           arialabel="buy now button"
+                           variant="contained"
+                        />
+
+                        <Button
+                           label="Add to Cart"
+                           type="button"
+                           arialabel="buy now button"
+                           variant="outline"
+                        />
+                     </div>
+                     <div className="mt-3 w-full rounded border">
+                        <div className=" my-4 flex  gap-2 px-4">
+                           <BussIcon className="mt-[2px] h-5 w-5 items-start justify-start" />
+                           <div>
+                              <span className="text-sm font-medium ">Free Delivery</span>
+                              <p className="mb-0 cursor-pointer text-xs text-[#333333cd] underline">
+                                 Enter your postal code for Delivery Availability
+                              </p>
+                           </div>
+                        </div>
+                        <Divider className="my-6 mt-6 border-[1px]" />
+                        <div className=" my-4 flex  gap-2 px-4">
+                           <ReturnIcon className="mt-[2px] h-5 w-5 items-start justify-start" />
+                           <div>
+                              <span className="text-sm font-medium ">Return Delivery</span>
+                              <p className="cursor-pointer text-xs text-[#333333cd] underline">
+                                 Free 30 days delivery return
+                              </p>
+                           </div>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
          </div>
-      </div>
+      </>
    );
 };
 

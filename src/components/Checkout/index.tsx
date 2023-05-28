@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { useAppDispatch, useAppSelector } from 'store/hook';
 import { removeItem } from 'store/reducers/cartStore';
 import { RootState } from 'store/store';
@@ -10,22 +11,28 @@ const Checkout = () => {
       dispatch(removeItem(id));
    };
    return (
-      <div className="max-width padding-x">
-         {cart.map((item) => (
-            <div className="flex items-center justify-between">
-               <img src={item.image} alt={item.name} />
-               <p>{item.name}</p>
-               <p>{item.quantity}</p>
-               <p>{item.price}</p>
-               <button
-                  onClick={() => handleRemoveItem(item.id)}
-                  className="h-10 w-10 cursor-pointer bg-red-400 text-white "
-               >
-                  X
-               </button>
-            </div>
-         ))}
-      </div>
+      <>
+         <Helmet>
+            <title>Next-Store - Checkout</title>
+            <meta name="description" content="Product Checkout page" />
+         </Helmet>
+         <div className="max-width padding-x">
+            {cart.map((item) => (
+               <div className="flex items-center justify-between">
+                  <img src={item.image} alt={item.name} />
+                  <p>{item.name}</p>
+                  <p>{item.quantity}</p>
+                  <p>{item.price}</p>
+                  <button
+                     onClick={() => handleRemoveItem(item.id)}
+                     className="h-10 w-10 cursor-pointer bg-red-400 text-white "
+                  >
+                     X
+                  </button>
+               </div>
+            ))}
+         </div>
+      </>
    );
 };
 
