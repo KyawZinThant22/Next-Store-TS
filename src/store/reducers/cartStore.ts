@@ -7,9 +7,27 @@ interface ICart {
    quantity: number;
    image: string;
 }
+export type ICheckoutBillingAddress = {
+   receiver: string;
+   phone: string;
+   fullAddress: string;
+   addressType: string;
+   isDefault: boolean;
+};
+
+export type IProductCheckoutState = {
+   activeStep: number;
+   subtotal: number;
+   total: number;
+   discount: number;
+   shipping: number;
+   billing: ICheckoutBillingAddress | null;
+   totalItems: number;
+};
 
 interface ICartStore {
    cart: ICart[];
+   checkout: IProductCheckoutState;
 }
 
 interface ICartPayload {
@@ -20,6 +38,15 @@ interface ICartPayload {
 }
 const initialState: ICartStore = {
    cart: [],
+   checkout: {
+      activeStep: 0,
+      subtotal: 0,
+      total: 0,
+      discount: 0,
+      shipping: 0,
+      billing: null,
+      totalItems: 0,
+   },
 };
 
 const cartSlice = createSlice({
@@ -50,9 +77,30 @@ const cartSlice = createSlice({
          const removeItem = state.cart.filter((item) => item.id !== action.payload);
          state.cart = removeItem;
       },
+
+      backStep(state) {
+         state.checkout.activeStep -= 1;
+      },
+
+      nextStep(state) {
+         state.checkout.activeStep += 1;
+      },
+
+      gotoStep(state, action) {
+         const step = action.payload;
+         state.checkout.activeStep = step;
+      },
    },
 });
 
 export default cartSlice.reducer;
 
-export const { addToCart, incrementQuantity, decrementQuantity, removeItem } = cartSlice.actions;
+export const {
+   addToCart,
+   incrementQuantity,
+   decrementQuantity,
+   removeItem,
+   backStep,
+   nextStep,
+   gotoStep,
+} = cartSlice.actions;

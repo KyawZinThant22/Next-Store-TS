@@ -24,7 +24,7 @@ const Checkout = () => {
             <Breadcrumb pathname={location.pathname} />
 
             <div className="grid grid-cols-12">
-               <div className="col-span-8 ">
+               <div className="col-span-8 mt-6 ">
                   <CheckoutStep />
                </div>
             </div>
