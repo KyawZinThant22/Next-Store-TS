@@ -9,6 +9,9 @@ interface IButtonProps {
    arialabel: string;
    className?: string;
    noHover?: boolean;
+   rounded?: string;
+   fontSize?: string;
+   disable?: boolean;
 }
 
 const buttonVariants = {
@@ -28,6 +31,9 @@ const Button = ({
    type,
    arialabel,
    className,
+   rounded,
+   fontSize,
+   disable,
    noHover = false,
 }: IButtonProps) => {
    return (
@@ -42,10 +48,16 @@ const Button = ({
             onClick={action}
             aria-label={arialabel}
             type={type}
+            disabled={disable}
             className={` ${
                className
                   ? className
-                  : ` text-md flex h-full w-full items-center justify-center rounded-full p-2 px-5 font-medium  md:p-3 md:px-6 md:text-lg ${
+                  : ` 
+                  ${
+                     fontSize ? fontSize : `text-md`
+                  } flex h-full w-full items-center justify-center ${
+                       rounded ? rounded : `rounded-full`
+                    } p-2 px-5 font-medium  md:p-3 md:px-6  ${
                        variant === 'contained' &&
                        'border-2 border-skin-jade bg-skin-jade font-bold text-white '
                     } 

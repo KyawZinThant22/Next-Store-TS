@@ -1,5 +1,5 @@
 Arguments: 
-  /opt/homebrew/Cellar/node/19.8.1/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js add -D @types/iconify-react
+  /opt/homebrew/Cellar/node/19.8.1/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js add fCurrency
 
 PATH: 
   /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/opt/homebrew/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin arm64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2ficonify-react: Not found
+  Error: https://registry.yarnpkg.com/fCurrency: Not found
       at params.callback [as _callback] (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:66145:18)
       at self.callback (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:140890:22)
       at Request.emit (node:events:512:28)
@@ -53,12 +53,14 @@ npm manifest:
       "@reduxjs/toolkit": "^1.9.5",
       "@tailwindcss/line-clamp": "^0.4.4",
       "@types/js-cookie": "^3.0.3",
+      "@types/lodash": "^4.14.195",
       "@types/react-helmet": "^6.1.6",
       "@types/react-helmet-async": "^1.0.3",
       "axios": "^1.4.0",
       "eslint-config-prettier": "^8.8.0",
       "framer-motion": "^10.12.5",
       "js-cookie": "^3.0.5",
+      "lodash": "^4.17.21",
       "netlify-cli": "^14.3.1",
       "prettier": "^2.8.8",
       "react": "^18.2.0",
@@ -68,7 +70,6 @@ npm manifest:
       "react-intersection-observer": "^9.4.3",
       "react-redux": "^8.0.5",
       "react-router-dom": "^6.10.0",
-  
       "redux": "^4.2.1",
       "redux-persist": "^6.0.0",
       "redux-toolkit": "^1.1.2",
@@ -76,6 +77,7 @@ npm manifest:
       "vite-tsconfig-paths": "^4.2.0"
     },
     "devDependencies": {
+      "@iconify/react": "^4.0.0",
       "@types/react": "^18.0.28",
       "@types/react-dom": "^18.0.11",
       "@typescript-eslint/eslint-plugin": "^5.59.1",
@@ -809,6 +811,18 @@ Lockfile:
     version "1.2.1"
     resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
     integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
+  
+  "@iconify/react@^4.0.0":
+    version "4.1.0"
+    resolved "https://registry.yarnpkg.com/@iconify/react/-/react-4.1.0.tgz#5ea86acae6e209a2f5b1b52922ab85d0d22f9b45"
+    integrity sha512-Mf72i3TNNKpKCKxmo7kzqyrUdCgaoljpqtWmtqpqwyxoV4ukhnDsSRNLhf2yBnqGr3cVZsdj/i0FMpXIY0Qk0g==
+    dependencies:
+      "@iconify/types" "^2.0.0"
+  
+  "@iconify/types@^2.0.0":
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
+    integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
   
   "@import-maps/resolve@^1.0.1":
     version "1.0.1"
@@ -1937,6 +1951,11 @@ Lockfile:
     version "7.0.11"
     resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.11.tgz"
     integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
+  
+  "@types/lodash@^4.14.195":
+    version "4.14.195"
+    resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.195.tgz#bafc975b252eb6cea78882ce8a7b6bf22a6de632"
+    integrity sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==
   
   "@types/minimatch@*":
     version "5.1.2"
@@ -6769,7 +6788,7 @@ Lockfile:
   
   lodash@4.17.21, lodash@^4.17.12, lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21:
     version "4.17.21"
-    resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
+    resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
     integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
   
   lodash@^3.10.1:

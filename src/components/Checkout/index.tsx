@@ -2,18 +2,60 @@ import Breadcrumb from 'components/Elements/Breadcrumb';
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'store/hook';
-import { removeItem } from 'store/reducers/cartStore';
-import { RootState } from 'store/store';
+import {
+   applyDiscount,
+   backStep,
+   decrementQuantity,
+   gotoStep,
+   incrementQuantity,
+   nextStep,
+   removeItem,
+} from 'store/reducers/cartStore';
+import { AppDispatch, RootState } from 'store/store';
 import CheckoutStep from './CheckoutStep';
+import CheckoutCart from './cart/CheckoutCart';
 
 const Checkout = () => {
-   const { cart } = useAppSelector((state: RootState) => state.cart);
-   const dispatch = useAppDispatch();
+   const { cart, checkout } = useAppSelector((state: RootState) => state.cart);
+
+   console.log(cart);
+   const STEPS = ['Cart', 'Billing & address', 'Payment'];
+
+   const { activeStep } = checkout;
+   const dispatch: AppDispatch = useAppDispatch();
    const location = useLocation();
+   const completed = activeStep === STEPS.length;
 
    const handleRemoveItem = (id: string) => {
       dispatch(removeItem(id));
    };
+
+   const handleNextStep = () => {
+      dispatch(nextStep());
+   };
+
+   const handleIncreaseQuantity = ({ productId }: { productId: string }) => {
+      dispatch(incrementQuantity({ productId }));
+   };
+
+   const handleDecreaseQuantity = ({ productId }: { productId: string }) => {
+      dispatch(decrementQuantity({ productId }));
+   };
+
+   const handleBackStep = () => {
+      dispatch(backStep());
+   };
+
+   const handleGotoStep = (step: number) => {
+      dispatch(gotoStep(step));
+   };
+
+   const handleApplyDiscount = (value: number) => {
+      if (cart.length) {
+         dispatch(applyDiscount(value));
+      }
+   };
+
    return (
       <>
          <Helmet>
@@ -25,23 +67,26 @@ const Checkout = () => {
 
             <div className="grid grid-cols-12">
                <div className="col-span-8 mt-6 ">
-                  <CheckoutStep />
+                  <CheckoutStep activeStep={activeStep} steps={STEPS} />
                </div>
             </div>
-            {cart.map((item) => (
-               <div className="flex items-center justify-between">
-                  <img src={item.image} alt={item.name} />
-                  <p>{item.name}</p>
-                  <p>{item.quantity}</p>
-                  <p>{item.price}</p>
-                  <button
-                     onClick={() => handleRemoveItem(item.id)}
-                     className="h-10 w-10 cursor-pointer bg-red-400 text-white "
-                  >
-                     X
-                  </button>
-               </div>
-            ))}
+            <div>
+               {completed ? (
+                  <p>Complete</p>
+               ) : (
+                  <>
+                     {activeStep === 0 && (
+                        <CheckoutCart
+                           onNextStep={handleNextStep}
+                           onDeleteCart={handleRemoveItem}
+                           onApplyDiscount={handleApplyDiscount}
+                           onIncreaseQuantity={handleIncreaseQuantity}
+                           onDecreaseQuantity={handleDecreaseQuantity}
+                        />
+                     )}
+                  </>
+               )}
+            </div>
          </div>
       </>
    );

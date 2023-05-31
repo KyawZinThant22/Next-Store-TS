@@ -12,6 +12,7 @@ export interface IBestDeal {
    price: string;
    image1: string;
    description: string;
+   stock: number;
 }
 
 const BestDeal = () => {

@@ -16,6 +16,7 @@ const ProductCard: React.FC<IData> = ({ data }) => {
    const handleAddtoCart = (data: IBestDeal) => {
       const { description, image1, ...dataWithoutDescription } = data;
       const ItemData = { ...dataWithoutDescription, image: image1 };
+
       dispatch(addToCart(ItemData));
    };
    return (

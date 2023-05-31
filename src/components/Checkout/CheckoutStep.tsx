@@ -5,14 +5,17 @@ import {
    StepConnector as MUIStepConnector,
    Stack,
    Box,
+   StepperProps,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Iconify from 'components/iconify/Iconify';
 
-const CheckoutStep = () => {
-   const steps = ['Step 1', 'Step 2', 'Step 3'];
-   const activeStep = 0;
+interface Props extends StepperProps {
+   steps: string[];
+   activeStep: number;
+}
 
+const CheckoutStep = ({ steps, activeStep, ...other }: Props) => {
    return (
       <div>
          <Stepper
@@ -20,6 +23,7 @@ const CheckoutStep = () => {
             activeStep={activeStep}
             connector={<StepConnector />}
             sx={{ mb: 5 }}
+            {...other}
          >
             {steps.map((label) => (
                <Step key={label}>

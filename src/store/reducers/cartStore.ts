@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ICart {
+export interface ICart {
    id: string;
    name: string;
    price: string;
    quantity: number;
    image: string;
+   stock: number;
 }
 export type ICheckoutBillingAddress = {
    receiver: string;
@@ -25,7 +26,7 @@ export type IProductCheckoutState = {
    totalItems: number;
 };
 
-interface ICartStore {
+export interface ICartStore {
    cart: ICart[];
    checkout: IProductCheckoutState;
 }
@@ -35,6 +36,7 @@ interface ICartPayload {
    name: string;
    price: string;
    image: string;
+   stock: number;
 }
 const initialState: ICartStore = {
    cart: [],
@@ -61,14 +63,14 @@ const cartSlice = createSlice({
             state.cart.push({ ...action.payload, quantity: 1 });
          }
       },
-      incrementQuantity: (state, action: PayloadAction<{ id: string }>) => {
-         const item = state.cart.find((item) => item.id === action.payload.id);
+      incrementQuantity: (state, action: PayloadAction<{ productId: string }>) => {
+         const item = state.cart.find((item) => item.id === action.payload.productId);
          if (item) {
             item.quantity++;
          }
       },
-      decrementQuantity: (state, action: PayloadAction<{ id: string }>) => {
-         const item = state.cart.find((item) => item.id === action.payload.id);
+      decrementQuantity: (state, action: PayloadAction<{ productId: string }>) => {
+         const item = state.cart.find((item) => item.id === action.payload.productId);
          if (item) {
             item.quantity === 1 ? (item.quantity = 1) : item.quantity--;
          }
@@ -90,6 +92,10 @@ const cartSlice = createSlice({
          const step = action.payload;
          state.checkout.activeStep = step;
       },
+      applyDiscount(state, action) {
+         const discount = action.payload;
+         state.checkout.discount = discount;
+      },
    },
 });
 
@@ -102,5 +108,6 @@ export const {
    removeItem,
    backStep,
    nextStep,
+   applyDiscount,
    gotoStep,
 } = cartSlice.actions;
