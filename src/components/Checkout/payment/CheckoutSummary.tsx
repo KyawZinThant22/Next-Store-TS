@@ -10,7 +10,6 @@ import {
    CardContent,
    InputAdornment,
 } from '@mui/material';
-import { sum } from 'lodash';
 import { useAppSelector } from 'store/hook';
 import { RootState } from 'store/store';
 
@@ -22,9 +21,9 @@ import { fCurrency } from 'utils/FCurrency';
 // ----------------------------------------------------------------------
 
 type Props = {
-   total: number;
+   total?: number;
    discount: number;
-   subtotal: number;
+   subtotal?: number;
    shipping?: number;
    onEdit?: VoidFunction;
    enableEdit?: boolean;
@@ -33,9 +32,7 @@ type Props = {
 };
 
 export default function CheckoutSummary({
-   total,
    discount,
-   subtotal,
    shipping,
    onApplyDiscount,
    enableDiscount = false,

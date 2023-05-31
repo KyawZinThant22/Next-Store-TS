@@ -14,6 +14,7 @@ import {
 import { AppDispatch, RootState } from 'store/store';
 import CheckoutStep from './CheckoutStep';
 import CheckoutCart from './cart/CheckoutCart';
+import CheckoutBillingAddress from './billing/CheckoutBillingAddress';
 
 const Checkout = () => {
    const { cart, checkout } = useAppSelector((state: RootState) => state.cart);
@@ -84,6 +85,7 @@ const Checkout = () => {
                            onDecreaseQuantity={handleDecreaseQuantity}
                         />
                      )}
+                     {activeStep === 1 && <CheckoutBillingAddress onBackStep={handleBackStep} />}
                   </>
                )}
             </div>
